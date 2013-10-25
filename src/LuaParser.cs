@@ -805,8 +805,6 @@ namespace AluminumLua {
         protected void ParseComment()
         {
             Consume('-');
-            if (Peek() == '-')
-                Consume();
 
             if (Consume() == '[' && Consume() == '[')
             {
