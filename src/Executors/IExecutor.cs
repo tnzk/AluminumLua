@@ -64,6 +64,7 @@ namespace AluminumLua.Executors {
 		void Subtract                       (); // pops <val2>, pops <val1>; pushes <val1> - <val2> (numeric)
 		void Multiply                       (); // pops <val2>, pops <val1>; pushes <val1> * <val2> (numeric)
 		void Divide                         (); // pops <val2>, pops <val1>; pushes <val1> / <val2> (numeric)
+		void Modulo                         (); // pops <val2>, pops <val1>; pushes <val1> % <val2> (numeric)
 		
 		// statements:
 		void PopStack                       (); // pops and discards value

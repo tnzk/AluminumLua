@@ -306,6 +306,12 @@ namespace AluminumLua {
                     CurrentExecutor.Divide();
                     break;
 
+                case '%':
+                    Consume();
+                    ParseRVal();
+                    CurrentExecutor.Modulo();
+                    break;
+
                 case 'o':
                 case 'O':
                     Consume();

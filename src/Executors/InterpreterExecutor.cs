@@ -214,6 +214,14 @@ namespace AluminumLua.Executors {
 			stack.Push (LuaObject.FromNumber (val1 / val2));
 		}
 		
+		public virtual void Modulo()
+		{
+			var val2 = stack.Pop().AsNumber();
+			var val1 = stack.Pop().AsNumber();
+
+			stack.Push(LuaObject.FromNumber(val1 % val2));
+		}
+
 		public virtual void PopStack ()
 		{
 			stack.Pop ();

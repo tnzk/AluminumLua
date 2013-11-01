@@ -138,6 +138,10 @@ namespace AluminumLua.Executors.ExpressionTrees {
                 Visit(b.Right);
 				IL.Emit (OpCodes.Div);
 				break;
+            case ExpressionType.Modulo:
+                Visit(b.Right);
+                IL.Emit(OpCodes.Rem);
+                break;
             case ExpressionType.GreaterThan:
                 Visit(b.Right);
                 IL.Emit(OpCodes.Cgt);
