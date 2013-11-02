@@ -170,6 +170,11 @@ namespace AluminumLua.Executors {
 		{
 			Target.Divide ();
 		}
+
+		public virtual void Modulo()
+		{
+			Target.Modulo ();
+		}
 		
 		public virtual void PopStack ()
 		{

@@ -270,25 +270,18 @@ namespace AluminumLua.Executors {
             var val1 = stack.Pop();
             stack.Push(Expression.Call(LuaObject_FromBool, Expression.Not(Expression.Call(val1, LuaObject_Equals, val2))));
         }
-#if NET35
-        public virtual void IfThenElse()
-        {
-            throw new NotImplementedException();
-        }
-#else
+
         public virtual void IfThenElse()
         {
             var Else = Expression.Call(stack.Pop(), LuaObject_AsFunction);
             var Then = Expression.Call(stack.Pop(), LuaObject_AsFunction);
             var Cond = Expression.Call(stack.Pop(), LuaObject_AsBool);
-            stack.Push(Expression.IfThenElse(
+            stack.Push(Expression.Condition(
                 Cond, 
                 Expression.Call(Then, LuaFunction_Invoke, Expression.NewArrayInit(typeof(LuaObject), new Expression[]{})), 
                 Expression.Call(Else, LuaFunction_Invoke, Expression.NewArrayInit(typeof(LuaObject), new Expression[]{}))
             ));
         }
-#endif
-
 
         public virtual void Greater()
         {
@@ -349,6 +342,14 @@ namespace AluminumLua.Executors {
 			var val1 = Expression.Call (stack.Pop (), LuaObject_AsNumber);
 			
 			stack.Push (Expression.Call (LuaObject_FromNumber, Expression.Divide (val1, val2)));
+		}
+		
+		public virtual void Modulo()
+		{
+			var val2 = Expression.Call(stack.Pop(), LuaObject_AsNumber);
+			var val1 = Expression.Call(stack.Pop(), LuaObject_AsNumber);
+
+			stack.Push(Expression.Call(LuaObject_FromNumber, Expression.Modulo(val1, val2)));
 		}
 		
 		public virtual void PopStack ()
